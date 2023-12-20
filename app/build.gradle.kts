@@ -114,6 +114,10 @@ dependencies {
     // Coil Compose
     implementation("io.coil-kt:coil-compose:2.4.0")
 
+    // LiveData
+    implementation("androidx.compose.runtime:runtime:1.5.4")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+
 }
 kapt {
     correctErrorTypes = true
