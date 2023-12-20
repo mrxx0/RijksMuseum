@@ -11,9 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.mrxx0.rijksmuseum.presentation.ArtObjectScreen
 import com.mrxx0.rijksmuseum.presentation.ArtObjectViewModel
+import com.mrxx0.rijksmuseum.presentation.ItemDetailsScreen
 import com.mrxx0.rijksmuseum.ui.theme.RijksMuseumTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +34,19 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val viewModel = hiltViewModel<ArtObjectViewModel>()
                     val artObjects = viewModel.artObjectPagingFlow.collectAsLazyPagingItems()
-                    ArtObjectScreen(artObjects = artObjects)
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "ArtObjectScreen") {
+                        composable(route = "ArtObjectScreen") {
+                            ArtObjectScreen(
+                                artObjects = artObjects,
+                                navController = navController,
+                                viewModel
+                            )
+                        }
+                        composable(route = "ItemDetailsScreen") {
+                            ItemDetailsScreen(viewModel)
+                        }
+                    }
                 }
             }
         }

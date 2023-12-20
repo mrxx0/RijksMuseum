@@ -12,13 +12,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.mrxx0.rijksmuseum.domain.ArtObject
 
 @Composable
 fun ArtObjectScreen(
-    artObjects: LazyPagingItems<ArtObject>
+    artObjects: LazyPagingItems<ArtObject>,
+    navController: NavController,
+    viewModel: ArtObjectViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = artObjects.loadState) {
@@ -47,7 +51,12 @@ fun ArtObjectScreen(
                 items(count = artObjects.itemCount) { index ->
                     val artObjectItem = artObjects[index]
                     if (artObjectItem != null) {
-                        ArtObjectCard(artObject = artObjectItem)
+                        ArtObjectCard(
+                            artObject = artObjectItem, onItemClick = { itemId ->
+                                viewModel.fetchItemDetails(itemId)
+                            },
+                            navController = navController
+                        )
                     }
                 }
                 item {

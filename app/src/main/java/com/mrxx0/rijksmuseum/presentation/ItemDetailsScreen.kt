@@ -44,7 +44,7 @@ fun ItemDetailsScreen(
                 Text(
                     text = "${itemDetails?.artObject?.title}",
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
