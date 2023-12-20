@@ -81,3 +81,16 @@ and from Local data to Model data (used in the UI)
 ## Screenshots
 
 
+<p float="left">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_1.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_2.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_3.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_4.png" width="480" height="1040">
+</p>
+
+<p float="left">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_1.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_2.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_3.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_4.png" width="480" height="1040">
+</p>
