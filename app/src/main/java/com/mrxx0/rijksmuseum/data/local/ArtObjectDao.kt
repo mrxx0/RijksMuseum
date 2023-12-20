@@ -1,5 +1,6 @@
 package com.mrxx0.rijksmuseum.data.local
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Upsert
 import androidx.room.Query
@@ -12,4 +13,8 @@ interface ArtObjectDao {
 
     @Query("DELETE FROM artobjectentity")
     suspend fun clearAll()
+
+    @Query("SELECT * FROM artobjectentity")
+    fun pagingSource(): PagingSource<Int, ArtObjectEntity>
+
 }

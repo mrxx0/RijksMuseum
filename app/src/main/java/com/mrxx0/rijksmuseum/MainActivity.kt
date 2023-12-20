@@ -10,8 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.mrxx0.rijksmuseum.presentation.ArtObjectScreen
+import com.mrxx0.rijksmuseum.presentation.ArtObjectViewModel
 import com.mrxx0.rijksmuseum.ui.theme.RijksMuseumTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,25 +28,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val viewModel = hiltViewModel<ArtObjectViewModel>()
+                    val artObjects = viewModel.artObjectPagingFlow.collectAsLazyPagingItems()
+                    ArtObjectScreen(artObjects = artObjects)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RijksMuseumTheme {
-        Greeting("Android")
     }
 }

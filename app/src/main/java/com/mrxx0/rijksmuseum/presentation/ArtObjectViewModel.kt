@@ -7,9 +7,11 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.mrxx0.rijksmuseum.data.local.ArtObjectEntity
 import com.mrxx0.rijksmuseum.data.mappers.toArtObject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+@HiltViewModel
 class ArtObjectViewModel @Inject constructor(
     pager: Pager<Int, ArtObjectEntity>
 ): ViewModel(){
