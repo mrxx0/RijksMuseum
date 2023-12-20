@@ -64,33 +64,19 @@ Contains everything related to the UI : Screens and ViewModel
 - Coil Compose : to display image inside a composable
 - LiveData : to observe data to update the UI
 
-### Data
-
-In the data package there are 3 subpackage : 
-
-### Local
-It contains all the data that will be used locally for the storage
-
-### Remote
-It contains all the data needed to store the response for the API
-
-### Mappers
-The mappers package allows to convert from Remote data to Local data
-and from Local data to Model data (used in the UI)
-
 ## Screenshots
 
 
 <p float="left">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_1.png" width="480" height="1040">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_2.png" width="480" height="1040">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_3.png" width="480" height="1040">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_4.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_1.png" width="240" height="520">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_2.png" width="240" height="520">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_3.png" width="240" height="520">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/dark_4.png" width="240" height="520">
 </p>
 
 <p float="left">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_1.png" width="480" height="1040">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_2.png" width="480" height="1040">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_3.png" width="480" height="1040">
-  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_4.png" width="480" height="1040">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_1.png" width="240" height="520">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_2.png" width="240" height="520">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_3.png" width="240" height="520">
+  <img src="https://github.com/mrxx0/RijksMuseum/blob/main/screenshots/light_4.png" width="240" height="520">
 </p>
