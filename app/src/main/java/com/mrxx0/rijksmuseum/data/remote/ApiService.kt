@@ -2,6 +2,7 @@ package com.mrxx0.rijksmuseum.data.remote
 
 import com.mrxx0.rijksmuseum.BuildConfig
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -12,6 +13,12 @@ interface ApiService {
         @Query("p") p: Int,
         @Query("ps") ps: Int
     ): ArtObjectsDtoResponse
+
+    @GET("en/collection/{id}")
+    suspend fun getItem(
+        @Path("id") id: String,
+        @Query("key") key: String
+    ): ArtObjectItemDtoResponse
 
     companion object {
         const val BASE_URL = "https://www.rijksmuseum.nl/api/"
