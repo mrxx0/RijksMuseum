@@ -29,32 +29,7 @@ This project is structured following the MVVM architecture.
 - Seperate the UI code base from the logic codebase
 - Lifecycle management on configuration change (like screen rotation)
 
-### Data
-
-In the data package there are 3 subpackage : 
-
-### Local
-It contains all the data that will be used locally for the storage
-
-### Remote
-It contains all the data needed to store the response for the API
-
-### Mappers
-The mappers package allows to convert from Remote data to Local data
-and from Local data to Model data (used in the UI)
-
-### DI
-Contains the AppModule to provide the ApiService, the Database and the 
-pager.
-
-### Domain
-Contains the data class representing the ArtObject that will be used
-across the UI
-
-### Presentation
-Contains everything related to the UI : Screens and ViewModel
-
-### External Libraries
+## External Libraries
 
 - Kotlinx serialization : to get Kotlin object from JSON
 - Retrofit : to make network request
