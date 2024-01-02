@@ -4,7 +4,7 @@ import com.mrxx0.rijksmuseum.data.local.ArtObjectEntity
 import com.mrxx0.rijksmuseum.data.remote.ArtObjectDto
 import com.mrxx0.rijksmuseum.domain.ArtObject
 
-fun ArtObjectDto.toArtObjectEntity() : ArtObjectEntity {
+fun ArtObjectDto.toArtObjectEntity(): ArtObjectEntity {
     return ArtObjectEntity(
         principalOrFirstMaker = principalOrFirstMaker,
         webImageOffsetPercentageX = webImage?.offsetPercentageX,
@@ -31,7 +31,7 @@ fun ArtObjectDto.toArtObjectEntity() : ArtObjectEntity {
     )
 }
 
-fun ArtObjectEntity.toArtObject() : ArtObject {
+fun ArtObjectEntity.toArtObject(): ArtObject {
     return ArtObject(
         principalOrFirstMaker = principalOrFirstMaker,
         webImageOffsetPercentageX = webImageOffsetPercentageX,

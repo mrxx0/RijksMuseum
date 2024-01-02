@@ -1,4 +1,4 @@
-package com.mrxx0.rijksmuseum.presentation
+package com.mrxx0.rijksmuseum.presentation.itemdetails
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,10 +33,10 @@ import com.mrxx0.rijksmuseum.data.remote.PrincipalMakersItem
 
 @Composable
 fun ItemDetailsScreen(
-    viewModel: ArtObjectViewModel = hiltViewModel()
+    itemDetailsViewModel: ItemDetailsViewModel = hiltViewModel()
 ) {
-    val itemDetails by viewModel.result.observeAsState()
-    val isLoading by viewModel.isLoading.observeAsState()
+    val itemDetails by itemDetailsViewModel.result.observeAsState()
+    val isLoading by itemDetailsViewModel.isLoading.observeAsState()
     val scroll = rememberScrollState()
 
     Box(
@@ -61,25 +61,25 @@ fun ItemDetailsScreen(
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (itemDetails != null) {
-                    itemDetails!!.artObject.title?.let { ItemTitle(itemTitle = it) }
-                    if (itemDetails!!.artObject.showImage) {
-                        itemDetails!!.artObject.webImage?.let {
+                itemDetails?.let { details ->
+                    details.artObject.title?.let { ItemTitle(itemTitle = it) }
+                    if (details.artObject.showImage) {
+                        details.artObject.webImage?.let {
                             it.url?.let { it1 ->
                                 ItemImage(itemImageUrl = it1)
                             }
                         }
                     }
-                    itemDetails!!.artObject.plaqueDescriptionEnglish?.let {
+                    details.artObject.plaqueDescriptionEnglish?.let {
                         ItemDescription(itemDescription = it)
                     }
-                    itemDetails!!.artObject.principalMakers?.let {
+                    details.artObject.principalMakers?.let {
                         ItemMakers(itemMakers = it)
                     }
-                    itemDetails!!.artObject.acquisition?.let {
+                    details.artObject.acquisition?.let {
                         ItemAcquisition(itemAcquisition = it)
                     }
-                } else {
+                } ?: run {
                     Text(
                         text = "Network error: Please check you connexion and try again.",
                         textAlign = TextAlign.Center,

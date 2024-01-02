@@ -26,6 +26,7 @@ class ArtObjectRemoteMediator(
                 LoadType.PREPEND -> return MediatorResult.Success(
                     endOfPaginationReached = true
                 )
+
                 LoadType.APPEND -> {
                     val lastItem = state.lastItemOrNull()
                     if (lastItem == null) {

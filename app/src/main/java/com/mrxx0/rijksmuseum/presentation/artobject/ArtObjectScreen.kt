@@ -1,4 +1,4 @@
-package com.mrxx0.rijksmuseum.presentation
+package com.mrxx0.rijksmuseum.presentation.artobject
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -17,12 +17,13 @@ import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.mrxx0.rijksmuseum.domain.ArtObject
+import com.mrxx0.rijksmuseum.presentation.itemdetails.ItemDetailsViewModel
 
 @Composable
 fun ArtObjectScreen(
     artObjects: LazyPagingItems<ArtObject>,
     navController: NavController,
-    viewModel: ArtObjectViewModel = hiltViewModel()
+    itemDetailsViewModel: ItemDetailsViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = artObjects.loadState) {
@@ -53,7 +54,7 @@ fun ArtObjectScreen(
                     if (artObjectItem != null) {
                         ArtObjectCard(
                             artObject = artObjectItem, onItemClick = { itemId ->
-                                viewModel.fetchItemDetails(itemId)
+                                itemDetailsViewModel.fetchItemDetails(itemId)
                             },
                             navController = navController
                         )

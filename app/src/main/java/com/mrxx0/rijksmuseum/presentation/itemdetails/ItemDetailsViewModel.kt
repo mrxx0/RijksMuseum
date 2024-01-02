@@ -1,28 +1,22 @@
-package com.mrxx0.rijksmuseum.presentation
+package com.mrxx0.rijksmuseum.presentation.itemdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.cachedIn
-import androidx.paging.map
-import com.mrxx0.rijksmuseum.data.local.ArtObjectEntity
-import com.mrxx0.rijksmuseum.data.mappers.toArtObject
 import com.mrxx0.rijksmuseum.data.remote.ApiService
 import com.mrxx0.rijksmuseum.data.remote.ArtObjectItemDtoResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class ArtObjectViewModel @Inject constructor(
-    pager: Pager<Int, ArtObjectEntity>,
+class ItemDetailsViewModel @Inject constructor(
     private val apiService: ApiService
-): ViewModel(){
+) : ViewModel() {
 
     private val _result = MutableLiveData<ArtObjectItemDtoResponse?>()
     val result: MutableLiveData<ArtObjectItemDtoResponse?> get() = _result
@@ -30,28 +24,20 @@ class ArtObjectViewModel @Inject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-
-    val artObjectPagingFlow = pager
-        .flow
-        .map { pagingData ->
-            pagingData.map { it.toArtObject() }
-        }
-        .cachedIn(viewModelScope)
-
     fun fetchItemDetails(itemId: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
+        viewModelScope.launch(Dispatchers.IO) {
+            _isLoading.postValue(true)
             try {
                 val response = apiService.getItem(itemId, ApiService.API_KEY)
-                _result.value = response
-                _isLoading.value = false
+                _result.postValue(response)
+                _isLoading.postValue(false)
             } catch (e: HttpException) {
-                _result.value = null
-                _isLoading.value = false
+                _result.postValue(null)
+                _isLoading.postValue(false)
                 e.printStackTrace()
             } catch (e: IOException) {
-                _result.value = null
-                _isLoading.value = false
+                _result.postValue(null)
+                _isLoading.postValue(false)
                 e.printStackTrace()
             }
         }
